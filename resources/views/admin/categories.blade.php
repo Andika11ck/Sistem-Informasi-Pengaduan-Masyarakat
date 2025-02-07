@@ -1,17 +1,15 @@
-@extends('layouts.blank')
+@extends('layouts.base')
 @section('title', 'Master Data Kategori')
-    
+
 
 
 @section('contents')
-    <!-- End of Topbar -->
+@if(session('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
+@endif
 
-    <!-- Begin Page Content -->
+
     <div class="container-fluid">
-
-        <!-- Page Heading -->
-
-
         <h2 class="mt-5">Master Data Kategori</h2>
         <form action="{{ route('admin.categories.store') }}" method="POST" class="mb-3">
             @csrf
@@ -35,5 +33,5 @@
 
 
     </div>
-    <!-- /.container-fluid -->
+
 @endsection

@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.base')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Laporan</title>
-    <link href="{{ asset('/assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
-</head>
-
-<body>
+@section('title', 'Detail Laporan')
+    
+ @section('contents')
     <div class="container mt-5">
         <h1>Detail Laporan</h1>
         <div class="card-body">
@@ -56,6 +50,5 @@
         </div>
         <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary">Kembali</a>
     </div>
-</body>
 
-</html>
+@endsection

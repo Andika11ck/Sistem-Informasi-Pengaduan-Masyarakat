@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Admin;
+use App\Models\User;
 use App\Models\Report;
 use App\Models\Category;
 use Illuminate\Support\Facades\Hash;
@@ -58,19 +59,24 @@ class AdminController extends Controller
     }
     public function showAddForm()
     {
-        return view('admin.add'); // Mengarahkan ke view add.blade.php
+        return view('admin.add');
     }
     public function showAdmins()
     {
-        $admins = Admin::all(); // Mengambil semua data admin
-        return view('admin.admins', compact('admins')); // Mengirim data admin ke view
+        $admins = Admin::all(); 
+        return view('admin.admins', compact('admins')); 
+    }
+    public function showUsers()
+    {
+        $users = User::all(); 
+        return view('admin.users', compact('users')); 
     }
 
     public function destroyAdmin($id)
     {
         $admin = Admin::findOrFail($id);
 
-        // Tidak boleh menghapus admin yang sedang login
+       
         if (auth('admin')->id() === $admin->id) {
             return redirect()->route('admin.dashboard')->with('error', 'Tidak dapat menghapus admin yang sedang login.');
         }
@@ -79,10 +85,21 @@ class AdminController extends Controller
 
         return redirect()->route('admin.dashboard')->with('success', 'Admin berhasil dihapus.');
     }
+    public function destroyUser($id)
+    {
+        $user = User::findOrFail($id);
+
+       
+       
+
+        $user->delete();
+
+        return redirect()->route('admin.dashboard')->with('success', 'User berhasil dihapus.');
+    }
     public function detail($id)
     {
-        $report = Report::findOrFail($id); // Ambil laporan berdasarkan ID
-        return view('admin.report_detail', compact('report')); // Kirim data laporan ke view
+        $report = Report::findOrFail($id); 
+        return view('admin.report_detail', compact('report')); 
     }
     public function deleteReport($id)
     {

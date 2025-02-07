@@ -13,14 +13,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
     <!-- Custom fonts for this template-->
-    <link href="{{asset('/assets/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('/assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="{{asset('/assets/css/sb-admin-2.min.css')}}" rel="stylesheet">
-    <link href="{{asset('/assets/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('/assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 
 </head>
 
@@ -28,12 +28,13 @@
     <div id="wrapper">
         {{-- class="fas fa-laugh-wink" --}}
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav  sidebar sidebar-dark accordion" id="accordionSidebar" style="  background: linear-gradient(135deg, #1f4037, #99f2c8);">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.dashboard') }}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center"
+                href="{{ route('admin.dashboard') }}">
                 <div class="sidebar-brand-icon ">
-                    <i ><img src="{{asset('/assets/img/sipuma.jpg')}}" alt="" style="width: 50%"></i>
+                    <i><img src="{{ asset('/assets/img/sipuma.jpg') }}" alt="" style="width: 50%"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">SIPUMA </div>
             </a>
@@ -62,25 +63,26 @@
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Data Master</span>
-                    
+
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                       
+
                         <a class="collapse-item" href="/admin/add">Tambah Admin</a>
                         <a class="collapse-item" href="/admin/categories">Kategori</a>
                         <a class="collapse-item" href="/admin/admins">Admin</a>
+                        <a class="collapse-item" href="/admin/users">User</a>
                     </div>
                 </div>
-                
-                <a class="nav-link collapsed" href="#"data-toggle="modal" data-target="#logoutModal" 
+
+                <a class="nav-link collapsed" href="#"data-toggle="modal" data-target="#logoutModal"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw "></i>
-                   <span>Logout</span> 
+                    <span>Logout</span>
                 </a>
             </li>
-            
-            
+
+
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -108,7 +110,8 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <form
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small"
                                 placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
@@ -163,7 +166,8 @@
                                 aria-labelledby="userDropdown">
 
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="#" data-toggle="modal"
+                                    data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -173,74 +177,74 @@
                     </ul>
 
                 </nav>
-    <!-- Page Wrapper -->
-    
-    @yield('contents')
-    
-</div>
-<!-- End of Main Content -->
+                <!-- Page Wrapper -->
 
-<!-- Footer -->
-<footer class="sticky-footer bg-white">
-    <div class="container my-auto">
-        <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Andika Developer 2025</span>
+                @yield('contents')
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Andika Developer 2025</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
         </div>
+        <!-- End of Content Wrapper -->
+
     </div>
-</footer>
-<!-- End of Footer -->
+    <!-- End of Page Wrapper -->
 
-</div>
-<!-- End of Content Wrapper -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
-</div>
-<!-- End of Page Wrapper -->
+    <!-- Logout Modal-->
+    <form method="POST" action="/admin/logout">
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
 
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-<i class="fas fa-angle-up"></i>
-</a>
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Logout</button>
 
-<!-- Logout Modal-->
-<form method="POST" action="/admin/logout">
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
-<div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-            </button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-
-            @csrf
-            <button type="submit" class="btn btn-danger">Logout</button>
-
-        </div>
-    </div>
-</div>
-</div>
-</form>
+    </form>
     <!-- Bootstrap core JavaScript-->
-   
-    <script src="{{asset('assets/vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+    <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="{{asset('assets/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+    <script src="{{ asset('assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="{{asset('assets/js/sb-admin-2.min.js')}}"></script>
+    <script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
 
-    <script src="{{asset('assets/vendor/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{ asset('assets/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
 
     <!-- Page level custom scripts -->
-    <script src="{{asset('assets/js/demo/datatables-demo.js')}}"></script>
+    <script src="{{ asset('assets/js/demo/datatables-demo.js') }}"></script>
 
 </body>
 

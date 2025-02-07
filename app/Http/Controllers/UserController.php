@@ -14,12 +14,15 @@ class UserController extends Controller
 
     public function create()
     {
-        $categories = Category::all(); // Ambil semua kategori dari database
+        $categories = Category::all(); 
         
         return view('user.create_report', compact('categories'));
     }
     public function store(Request $request)
     {
+        if (!auth()->check()) {
+            return redirect()->route('login')->with('error', 'Anda harus login terlebih dahulu!');
+        }
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
@@ -63,7 +66,7 @@ class UserController extends Controller
         ]);
         
 
-        // Handle file upload
+       
         $proofPath = null;
         if ($request->hasFile('proof')) {
             

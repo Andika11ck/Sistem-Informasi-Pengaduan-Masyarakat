@@ -1,25 +1,11 @@
 @extends('layouts.base')
 
 @section('contents')
-@if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
     <div class="container-fluid">
-        <h1 class="h3 mb-2 text-gray-800">Admin</h1>
+        <h1 class="h3 mb-2 text-gray-800">User</h1>
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Data Admin</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Data User</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -32,12 +18,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($admins as $admin)
+                            @foreach ($users as $user)
                                 <tr>
-                                    <td>{{ $admin->name }}</td>
-                                    <td>{{ $admin->email }}</td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
                                     <td>
-                                        <form action="{{ route('admin.admins.destroy', $admin->id) }}" method="POST"
+                                        <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST"
                                             class="d-inline">
                                             @csrf
                                             @method('DELETE')

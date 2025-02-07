@@ -1,15 +1,10 @@
-@extends('layouts.blank')
+@extends('layouts.base')
 
 @section('contents')
-    <!-- End of Topbar -->
 
-    <!-- Begin Page Content -->
+
+
     <div class="container-fluid">
-
-        <!-- Page Heading -->
-
-
-
         <div class="container mt-5">
             <h1>Tambah Admin Baru</h1>
             <form method="POST" action="{{ route('admin.admins.store') }}">
@@ -30,8 +25,5 @@
             </form>
             <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary mt-3">Kembali ke Dashboard</a>
         </div>
-
-
     </div>
-    <!-- /.container-fluid -->
 @endsection

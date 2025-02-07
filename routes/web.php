@@ -4,10 +4,18 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\AuthController;
+
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+Route::post('/register', [AuthController::class, 'register'])->name('register.post');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 
-Route::get('/', [UserController::class, 'home']);
+Route::get('/', [UserController::class, 'home'])->name('home');
+
 Route::get('/user/report/create', [UserController::class, 'create']);
 Route::post('/user/report/store', [UserController::class, 'store']);
 Route::get('/user/reports', [UserController::class, 'viewReports']);
@@ -28,14 +36,16 @@ Route::post('/admin/reports/{id}/validate', [AdminController::class, 'validateRe
 Route :: get ('/admin/categories', [CategoryController :: class, 'index'])->name('admin.categories');
 Route::post('/admin/categories/store', [CategoryController::class, 'store'])->name('admin.categories.store');
 Route::delete('/admin/categories/{id}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
-// Tampilkan form tambah admin
+
 Route::get('/admin/add', [AdminController::class, 'showAddForm'])->name('admin.admins.add');
 Route::get('/admin/admins', [AdminController::class, 'showAdmins'])->name('admin.admins');
-// Simpan data admin baru
+
 Route::post('/admin/admins/store', [AdminController::class, 'storeAdmin'])->name('admin.admins.store');
 Route::delete('/admin/admins/{id}', [AdminController::class, 'destroyAdmin'])->name('admin.admins.destroy');
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
+
 Route::post('/admin/reports/{id}/approve', [AdminController::class, 'approve'])->name('admin.reports.approve');
 Route::post('/admin/reports/{id}/reject', [AdminController::class, 'reject'])->name('admin.reports.reject');
+
+Route::get('/admin/users', [AdminController::class, 'showUsers'])->name('admin.users');
+Route::delete('/admin/users/{id}', [AdminController::class, 'destroyUser'])->name('admin.users.destroy');
