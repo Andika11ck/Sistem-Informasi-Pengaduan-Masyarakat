@@ -1,3 +1,66 @@
+
+# Sistem Informasi Pengaduan Masyarakat (SIPUMA)
+
+SIPUMA adalah sistem informasi berbasis web yang digunakan untuk mengelola pengaduan masyarakat secara online.
+
+## 🚀 Cara Clone dan Menjalankan Proyek Ini
+
+### 1️⃣ Clone Repository
+Jalankan perintah ini di terminal atau Git Bash:
+```bash
+git clone https://github.com/Andika11ck/Sistem-Informasi-Pengaduan-Masyarakat.git
+```
+
+### 2️⃣ Masuk ke Direktori Proyek
+```bash
+cd Sistem-Informasi-Pengaduan-Masyarakat
+```
+
+### 3️⃣ Install Dependensi
+Pastikan **Composer** sudah terinstal, lalu jalankan:
+```bash
+composer install
+```
+
+### 4️⃣ Konfigurasi Environment
+Salin file `.env.example` menjadi `.env`:
+```bash
+cp .env.example .env
+```
+Kemudian jalankan perintah:
+```bash
+php artisan key:generate
+```
+
+### 5️⃣ Setup Database
+- Buat database baru di **phpMyAdmin** atau MySQL.
+- Edit file `.env`, ubah sesuai dengan database yang dibuat:
+  ```env
+  DB_DATABASE=sipuma
+  DB_USERNAME=root
+  DB_PASSWORD=
+  ```
+- Jalankan migrasi:
+  ```bash
+  php artisan migrate --seed
+  ```
+
+### 6️⃣ Jalankan Server Laravel
+Jalankan server dengan perintah:
+```bash
+php artisan serve
+```
+Kemudian buka browser dan akses **http://127.0.0.1:8000**.
+
+---
+
+## 📜 Lisensi
+Proyek ini menggunakan lisensi [MIT](LICENSE).
+
+---
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
